@@ -1,13 +1,18 @@
-#sketch-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
-    width: 560px;
-    height: 560px;
-    border: 3px solid black;
-    }
+body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
-    #sketch-container > div {
-    width: 30px;
-    height: 30px;
-    border: 1px solid gray;
-    }
+.container>div {
+    border: 1px solid black;
+    height: 25px;
+    width: 25px;
+  }
+  
+  #sizeBtn {
+    margin-bottom: 25px;
+    padding: 10px;
+  }
