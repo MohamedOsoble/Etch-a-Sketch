@@ -9,20 +9,22 @@ function clearDivs(divName){
     }
 }
 
-function editStyleSheet(length){
+function editStyleSheet(length, canvasSize){
 
     sketchContainer.style.display = "grid";
-    sketchContainer.style.setProperty('grid-template-columns', 'repeat(' + length + ', 25px [col-start])');
+    sketchContainer.style.setProperty('grid-template-columns', 'repeat(' + length + ', ' + canvasSize + 'px [col-start])');
 
 }
 
 function createCells(rows){
     let divs = rows * rows;
-    editStyleSheet(rows);
+    let canvasSize = 800 / rows;
+    editStyleSheet(rows, canvasSize);
+
     for(let i = 0; i < divs; i++){
 
         let row = document.createElement('div');
-        row.style.cssText = "border: 1px solid black; height: 25px; width: 25px";
+        row.style.cssText = "border: 1px solid black; height: " + canvasSize + "px; width: " + canvasSize + "px;";
         row.setAttribute('id', i);
         row.setAttribute('class', 'cell');
         sketchContainer.appendChild(row);
@@ -41,9 +43,12 @@ cells.forEach((cell) => {
 function changeGridSize(){
     let exceedMaxSize = true;
     while(exceedMaxSize){
-            var gridSize = prompt("Please enter a new grid size", "maximum size is 100");
+            var gridSize = prompt("Please enter a new grid size", DEFAULT_SIZE);
             if(gridSize < 101){
                 exceedMaxSize = false;
+            }
+            else{
+                alert("Maximum size is 100")
             }
     };
 
